@@ -85,7 +85,7 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o 
 
 **José Leydilson Silva de Araújo**
 
-- **LinkedIn:** [https://www.linkedin.com/in/SEU_LINKEDIN](https://www.linkedin.com/in/leydilson)
-- **GitHub:** [https://github.com/leydilson](https://github.com/leydilson-silva)
-
+- **[LinkedIn](https://www.linkedin.com/in/leydilson)**
+- **[GitHub:](https://github.com/leydilson)**
+  
 Obrigado por visitar!
