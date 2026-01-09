@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Configuração de Cores (CSS Variables) */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Aplicação das cores no Body */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- UTILITÁRIO PARA REMOVER SCROLLBAR (Obrigatório) --- */
+@layer utilities {
+  /* Esconde a scrollbar no Chrome, Safari e Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Esconde no IE, Edge e Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
