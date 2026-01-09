@@ -3,38 +3,35 @@
 import { useState, useEffect } from "react";
 
 export const useTheme = () => {
-  // Estado inicial assume "light" para evitar erro de hidratação
+  // Estado inicial já começa como "light"
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    // 1. Pega a preferência salva ou do sistema
+    // 1. Verifica APENAS se existe uma escolha salva no navegador
     const savedTheme = localStorage.getItem("theme");
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
-    // Verifica se deve ser escuro
-    const isDark = savedTheme === "dark" || (!savedTheme && systemDark);
 
-    // 2. Aplica a classe no HTML imediatamente (evita piscar branco)
+    // Se for "light" ou NÃO TIVER NADA (primeira vez), mantém light.
+    const isDark = savedTheme === "dark";
+
     if (isDark) {
       document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-
-    // 3. Só atualiza o estado do React SE for necessário
-    // Como iniciamos com "light", só chamamos setTheme se for "dark"
-    if (isDark) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme("dark");
+    } else {
+      // Garante que comece limpo (Light Mode)
+      document.documentElement.classList.remove("dark");
+      setTheme("light");
     }
-  }, []); // Array vazio = roda apenas uma vez ao montar
+  }, []); 
 
   const toggleTheme = () => {
     if (theme === "light") {
+      // Usuário escolheu Dark -> Ativa e Salva
       setTheme("dark");
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {
+      // Usuário escolheu Light -> Ativa e Salva
       setTheme("light");
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
