@@ -10,7 +10,7 @@ type ProjectCardProps = {
         description: string;
         images: string[]; 
         tags: string[];
-        githubUrl?: string; // <--- 1. Agora é opcional (tem o '?')
+        githubUrl?: string; 
         deployUrl?: string;
     }; 
     btnRepo: string;
