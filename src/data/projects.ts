@@ -1,13 +1,11 @@
-import { StaticImageData } from "next/image";
-
 // Definição do Tipo (Type Safety)
 export type ProjectType = {
   id: string;
-  image: string; // Caminho da imagem em /public
+  folder:string; // Nome da pasta dentro de /public/projects
   tags: string[];
   links: {
-    github: string;
-    deploy?: string; // Opcional
+    github?: string;
+    deploy?: string;
   };
   content: {
     pt: {
@@ -19,6 +17,7 @@ export type ProjectType = {
       description: string;
     };
   };
+  images?: string[];
 };
 
 // --- SUA LISTA DE PROJETOS FICA AQUI ---
@@ -27,76 +26,57 @@ export type ProjectType = {
 
 export const projectsData: ProjectType[] = [
   {
-    id: "ecommerce",
-    image: "/placeholder-ecommerce.svg", // Coloque suas imagens na pasta public
-    tags: ["Next.js", "TypeScript", "Stripe"],
+  id: "personal-portfolio",
+  folder: "personal-portfolio",
+  tags: ["Next.js", "Tailwind CSS", "TypeScript", "React"],
+  links: {
+    github: "https://github.com/Leydilson-Silva/portfolio-leydilson",
+  },
+  content: {
+    pt: {
+      title: "Portfólio Profissional",
+      description: "Plataforma pessoal com arquitetura escalável e carregamento automatizado de assets via File System.",
+    },
+    en: {
+      title: "Professional Portfolio",
+      description: "Personal platform with scalable architecture and automated asset loading via File System.",
+    },
+  },
+},
+  {
+    id: "estudo-natal",
+    folder: "estudo-natal",
+    tags: ["Svelte", "Python", "Django", "WordPress", "Twilio"],
     links: {
-      github: "https://github.com/seu-user/repo",
-      deploy: "https://seu-projeto.vercel.app",
+      deploy: "https://estudonatal.com.br/",
     },
     content: {
       pt: {
-        title: "E-commerce Completo",
-        description: "Plataforma de vendas online com carrinho, checkout seguro via Stripe e painel administrativo.",
+        title: "Estudo Natal - UFRN",
+        description: "Plataforma de pesquisa sobre saúde cardiovascular em idosos. Atuei no Full Stack refatorando o sistema de notificações (Twilio), implementando testes automatizados e desenvolvendo interfaces com Svelte.",
       },
       en: {
-        title: "Full E-commerce",
-        description: "Online sales platform with cart, secure checkout via Stripe, and admin panel.",
+        title: "Natal Study - UFRN",
+        description: "Research platform on cardiovascular health in the elderly. Worked as Full Stack refactoring the notification system (Twilio), implementing automated tests, and building interfaces with Svelte.",
       },
     },
   },
   {
-    id: "dashboard",
-    image: "/placeholder-dashboard.svg",
-    tags: ["React", "Python", "D3.js"],
+    id: "gfinder",
+    folder: "gfinder",
+    tags: ["WordPress", "JavaScript", "PHP", "CSS"],
     links: {
-      github: "https://github.com/seu-user/repo-dash",
+      // github: "#", Coloque o link do repositório do tema (se tiver) ou deixe vazio
+      //deploy: "https://gfinder.com",  Coloque o link real se estiver online
     },
     content: {
       pt: {
-        title: "Dashboard Analítico",
-        description: "Visualização de dados interativa para análise de métricas em tempo real usando D3 e Python.",
+        title: "GFinder - Blog Tech",
+        description: "Portal de notícias e análises sobre tecnologia e games. Desenvolvido com WordPress, implementando funcionalidades interativas personalizadas via JavaScript.",
       },
       en: {
-        title: "Analytical Dashboard",
-        description: "Interactive data visualization for real-time metrics analysis using D3 and Python.",
-      },
-    },
-  },
-  {
-    id: "landing-page",
-    image: "/placeholder-landing.svg",
-    tags: ["Tailwind", "SEO", "Vercel"],
-    links: {
-      github: "https://github.com/seu-user/repo-lp",
-      deploy: "https://landing.vercel.app",
-    },
-    content: {
-      pt: {
-        title: "Landing Page Otimizada",
-        description: "Página de alta conversão com animações suaves e SEO técnico avançado.",
-      },
-      en: {
-        title: "Optimized Landing Page",
-        description: "High-conversion page with smooth animations and advanced technical SEO.",
-      },
-    },
-  },
-  {
-    id: "landing-page1",
-    image: "/placeholder-landing.svg",
-    tags: ["Tailwind", "SEO", "Vercel", "Next.js"],
-    links: {
-      github: "https://github.com/seu-user/repo-lp",
-    },
-    content: {
-      pt: {
-        title: "Landing Page Otimizada teste 1",
-        description: "Página de alta conversão com animações suaves e SEO técnico avançado.",
-      },
-      en: {
-        title: "Optimized Landing Page test 1",
-        description: "High-conversion page with smooth animations and advanced technical SEO.",
+        title: "GFinder - Tech Blog",
+        description: "News and reviews portal about technology and games. Developed with WordPress, implementing custom interactive functionalities via JavaScript.",
       },
     },
   },

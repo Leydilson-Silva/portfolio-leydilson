@@ -2,10 +2,13 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import ProjectCard from "@/components/ui/ProjectCard";
-import { projectsData } from "@/data/projects"; // <--- 1. IMPORTANDO SEU "BANCO DE DADOS"
+import { ProjectType } from "@/data/projects";
 
-const Projects = () => {
-  const { t, lang } = useLanguage(); // <--- 2. Precisamos do 'lang' para saber se pegamos pt ou en
+const Projects = ({ data }: { data: ProjectType[] }) => {
+  const { t, lang } = useLanguage();
+
+  // Limitamos a exibição aos primeiros 6 projetos
+  const displayedProjects = data.slice(0, 6);
 
   return (
     <section id="projects" className="py-24 bg-neutral-50 dark:bg-neutral-900 transition-colors duration-500 ease-in-out">
@@ -15,17 +18,14 @@ const Projects = () => {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* 3. Mapeando a lista do arquivo projects.ts */}
-          {projectsData.map((project) => {
+          {displayedProjects.map((project) => {
             
-            // Seleciona o conteúdo (título/descrição) com base no idioma atual do site
             const content = project.content[lang]; 
 
-            // Montamos um objeto limpo para passar pro Card
-            const projectCardData = {
+            const cardData = {
                 title: content.title,
                 description: content.description,
-                image: project.image,       // Agora a imagem vai funcionar!
+                images: project.images || [],
                 tags: project.tags,
                 githubUrl: project.links.github,
                 deployUrl: project.links.deploy
@@ -34,13 +34,28 @@ const Projects = () => {
             return (
                 <ProjectCard 
                     key={project.id} 
-                    project={projectCardData} 
+                    project={cardData} 
                     btnRepo={t.projects.btnRepo} 
                     btnDeploy={t.projects.btnDeploy} 
                 />
             );
           })}
         </div>
+
+        {/* Botão "Ver Mais" (Opcional - só aparece se tiver mais de 6 projetos) */}
+        {data.length > 6 && (
+            <div className="mt-12 flex justify-center">
+                <a 
+                    href="https://github.com/Leydilson-Silva?tab=repositories" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="px-8 py-3 rounded-full bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium hover:bg-emerald-500 hover:text-white dark:hover:bg-[#00FF00] dark:hover:text-black transition-all"
+                >
+                    Ver todos no GitHub
+                </a>
+            </div>
+        )}
+
       </div>
     </section>
   );
