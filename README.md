@@ -81,7 +81,6 @@ Para explorar o código e rodar a aplicação localmente, siga os passos abaixo.
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
 
 --- -->
-
 ## 👨‍💻 Autor & Contato
 
 **José Leydilson Silva de Araújo**
