@@ -23,7 +23,7 @@ const Contact = () => {
         </a>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0 -mt-[2px]">
          <svg
           className="relative block w-full h-[100px] sm:h-[150px] fill-neutral-950 transition-colors duration-500"
           style={{ transform: "rotate(180deg)" }} 
